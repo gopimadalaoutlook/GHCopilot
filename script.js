@@ -166,27 +166,21 @@ document.addEventListener('DOMContentLoaded', () => {
     link.click();
   });
 
-  const saved = loadData();
-  if (saved) {
-    populateInputsFromData(saved);
-  } else {
-    // Deterministic integer defaults: income 50→1000, expense 1000→50
-    const defaultsIncome = [];
-    const defaultsExpense = [];
-    for (let i = 0; i < 12; i++) {
-      const inc = Math.round(50 + (950 * i) / 11); // 50 -> 1000
-      const exp = Math.round(50 + (950 * (11 - i)) / 11); // 1000 -> 50 (reverse)
-      defaultsIncome.push(inc);
-      defaultsExpense.push(exp);
-    }
-    for (let i = 1; i <= 12; i++) {
-      const id = String(i).padStart(2, '0');
-      const incEl = document.getElementById(`income-${id}`);
-      const expEl = document.getElementById(`expense-${id}`);
-      if (incEl) incEl.value = defaultsIncome[i - 1];
-      if (expEl) expEl.value = defaultsExpense[i - 1];
-    }
-    saveData(defaultsIncome, defaultsExpense);
+  // Seed fresh random values on every page load (do not persist)
+  const defaultsIncome = [];
+  const defaultsExpense = [];
+  for (let i = 0; i < 12; i++) {
+    const inc = Math.round(50 + Math.random() * 950);
+    const exp = Math.round(50 + Math.random() * 950);
+    defaultsIncome.push(inc);
+    defaultsExpense.push(exp);
+  }
+  for (let i = 1; i <= 12; i++) {
+    const id = String(i).padStart(2, '0');
+    const incEl = document.getElementById(`income-${id}`);
+    const expEl = document.getElementById(`expense-${id}`);
+    if (incEl) incEl.value = defaultsIncome[i - 1];
+    if (expEl) expEl.value = defaultsExpense[i - 1];
   }
   updateChartFromInputs();
 });
