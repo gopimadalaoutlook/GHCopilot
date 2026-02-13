@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bucks2Bar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <header class="mb-4">
+      <h1 class="h3">Bucks2Bar</h1>
+      <p class="text-muted">Track monthly income and expenses and visualize them.</p>
+    </header>
+
+    <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="data-tab" data-bs-toggle="tab" data-bs-target="#data-panel" type="button" role="tab" aria-controls="data-panel" aria-selected="true">Data</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="charts-tab" data-bs-toggle="tab" data-bs-target="#charts-panel" type="button" role="tab" aria-controls="charts-panel" aria-selected="false">Charts</button>
+      </li>
+    </ul>
+
+    <div class="tab-content pt-3">
+      <div class="tab-pane fade show active" id="data-panel" role="tabpanel" aria-labelledby="data-tab">
+        <form id="data-form" novalidate>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Income</th>
+                  <th>Expense</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Jan</td>
+                  <td><input id="income-01" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="01" aria-label="Income for January"></td>
+                  <td><input id="expense-01" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="01" aria-label="Expense for January"></td>
+                </tr>
+                <tr>
+                  <td>Feb</td>
+                  <td><input id="income-02" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="02" aria-label="Income for February"></td>
+                  <td><input id="expense-02" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="02" aria-label="Expense for February"></td>
+                </tr>
+                <tr>
+                  <td>Mar</td>
+                  <td><input id="income-03" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="03" aria-label="Income for March"></td>
+                  <td><input id="expense-03" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="03" aria-label="Expense for March"></td>
+                </tr>
+                <tr>
+                  <td>Apr</td>
+                  <td><input id="income-04" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="04" aria-label="Income for April"></td>
+                  <td><input id="expense-04" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="04" aria-label="Expense for April"></td>
+                </tr>
+                <tr>
+                  <td>May</td>
+                  <td><input id="income-05" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="05" aria-label="Income for May"></td>
+                  <td><input id="expense-05" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="05" aria-label="Expense for May"></td>
+                </tr>
+                <tr>
+                  <td>Jun</td>
+                  <td><input id="income-06" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="06" aria-label="Income for June"></td>
+                  <td><input id="expense-06" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="06" aria-label="Expense for June"></td>
+                </tr>
+                <tr>
+                  <td>Jul</td>
+                  <td><input id="income-07" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="07" aria-label="Income for July"></td>
+                  <td><input id="expense-07" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="07" aria-label="Expense for July"></td>
+                </tr>
+                <tr>
+                  <td>Aug</td>
+                  <td><input id="income-08" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="08" aria-label="Income for August"></td>
+                  <td><input id="expense-08" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="08" aria-label="Expense for August"></td>
+                </tr>
+                <tr>
+                  <td>Sep</td>
+                  <td><input id="income-09" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="09" aria-label="Income for September"></td>
+                  <td><input id="expense-09" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="09" aria-label="Expense for September"></td>
+                </tr>
+                <tr>
+                  <td>Oct</td>
+                  <td><input id="income-10" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="10" aria-label="Income for October"></td>
+                  <td><input id="expense-10" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="10" aria-label="Expense for October"></td>
+                </tr>
+                <tr>
+                  <td>Nov</td>
+                  <td><input id="income-11" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="11" aria-label="Income for November"></td>
+                  <td><input id="expense-11" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="11" aria-label="Expense for November"></td>
+                </tr>
+                <tr>
+                  <td>Dec</td>
+                  <td><input id="income-12" class="form-control form-control-sm income-input" type="number" min="0" step="0.01" data-month="12" aria-label="Income for December"></td>
+                  <td><input id="expense-12" class="form-control form-control-sm expense-input" type="number" min="0" step="0.01" data-month="12" aria-label="Expense for December"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex gap-2">
+            <button type="button" id="reset-button" class="btn btn-outline-secondary btn-sm">Reset</button>
+            <button type="button" id="clear-storage-button" class="btn btn-outline-danger btn-sm">Clear Saved Data</button>
+            <div class="ms-auto text-muted small align-self-center">Live updates with 300ms debounce</div>
+          </div>
+        </form>
+      </div>
+
+      <div class="tab-pane fade" id="charts-panel" role="tabpanel" aria-labelledby="charts-tab">
+        <!-- Download button -->
+         <button id="download-chart-button" class="btn btn-primary btn-sm mb-3" aria-label="Download chart as PNG">Download</button>  
+        <figure>
+          <canvas id="incomeExpenseChart" role="img" aria-label="Monthly income and expense grouped bar chart" width="600" height="400"></canvas>
+          <figcaption class="small text-muted">Income (green) vs Expense (red) by month.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <footer class="mt-4 text-muted small">&copy; 2026 Bucks2Bar</footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
