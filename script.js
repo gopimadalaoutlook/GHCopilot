@@ -142,6 +142,37 @@ function resetInputs() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+ 
+  const usernameForm = document.getElementById('username-form');
+  const usernameInput = document.getElementById('username-input');
+  const usernameRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{5,}$/;
+
+  if (usernameForm) {
+    usernameForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = usernameInput.value.trim();
+      const isValid = usernameRegex.test(username);
+      
+     
+      const existingMessage = document.getElementById('username-message');
+      if (existingMessage) existingMessage.remove();
+      
+   
+      const messageDiv = document.createElement('div');
+      messageDiv.id = 'username-message';
+      messageDiv.className = isValid ? 'alert alert-success mt-2' : 'alert alert-danger mt-2';
+      messageDiv.setAttribute('role', 'alert');
+      messageDiv.textContent = isValid 
+        ? `✓ Username "${username}" is valid!` 
+        : '✗ Username does not meet requirements. Must be at least 5 characters and include 1 uppercase letter, 1 number, and 1 special character.';
+      
+      usernameForm.parentElement.insertAdjacentElement('afterend', messageDiv);
+      
+     
+      setTimeout(() => messageDiv.remove(), 5000);
+    });
+  }
+
   const inputs = document.querySelectorAll('.income-input, .expense-input');
   const debouncedUpdate = debounce(updateChartFromInputs, 300);
   inputs.forEach(input => {
@@ -184,3 +215,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateChartFromInputs();
 });
+
+// Export functions for testing (Node.js/Jest)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    MONTHS,
+    STORAGE_KEY,
+    debounce,
+    formatCurrency,
+    readInputs,
+    saveData,
+    loadData,
+    initChart,
+    updateChartFromInputs,
+    populateInputsFromData,
+    resetInputs
+  };
+}
